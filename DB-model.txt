@@ -1,0 +1,59 @@
+;---------------------------------------------------------------
+; Company X - Existing BIZ Model
+;---------------------------------------------------------------
+
+namespace  X.BIZ
+database   BIZModel
+
+;---------------------------------------------------------------
+;---------------------------------------------------------------
+
+Object	ADJUST
+Table	ADJUST
+
+properties [
+    cont-no     string    10    n..1 with cont-no in CONTRACT
+    AdjDate     date
+    AdjNo       integer       ; DBase NUMBER field
+    AdjType     string    1
+    AmtAdj      money
+    AdjCancel   YesNo           "should always be No; not used anymore."
+    Comment     string    30
+    AdjName     string    10
+    TargetDt    date
+    TargetID    integer       ; DBase NUMBER field
+    TargetTy    string    1
+    Princ       money
+    Fees        money
+    Inter       money
+]
+
+;---------------------------------------------------------------
+Object	CANADA
+Table	CANADA
+
+properties [
+    Area        string    3
+]
+
+;---------------------------------------------------------------
+Object	CASHTYPE
+Table	CASHTYPE
+
+properties [
+    Cashtype    string    20
+    Order       integer       ; DBase NUMBER field
+]
+
+;---------------------------------------------------------------
+Object	CBUYLINK
+Table	CBUYLINK
+
+properties [
+    cont-no     string    10    n..1 with cont-no in CONTRACT
+    CbuyNo      string    10    n..1 with CbuyNo in COBUYER
+    EnteredDt   date
+    CbNo        integer         "Level of importance in list of co-buyers; prioritization"
+    Relation    string    10    "Should be a fixed list of choices"
+]
+
